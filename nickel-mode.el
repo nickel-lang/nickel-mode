@@ -8,7 +8,7 @@
 ;; Created: 7 March 2023
 ;; Keywords: languages configuration-language configuration nickel infrastructure
 ;; Homepage: https://nickel-lang.org/
-;; Package-Requires: (emacs "24.1")
+;; Package-Requires: ((emacs "24.1"))
 
 ;; This file is distributed under the terms of MIT license.
 
