@@ -34,3 +34,7 @@
 (add-to-list 'auto-mode-alist '("\\.ncl\\'" . nickel-mode))
 
 (provide 'nickel-mode)
+
+(provide 'nickel-mode)
+
+;;; nickel-mode.el ends here
