@@ -1,4 +1,4 @@
-;;; nickel.el --- A major mode for editing Nickel source code -*-lexical-binding: t-*-
+;;; nickel-mode.el --- A major mode for editing Nickel source code -*-lexical-binding: t-*-
 
 ;; Copyright (c) Tweag Holding and its affiliates.
 
