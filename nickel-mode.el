@@ -35,6 +35,4 @@
 
 (provide 'nickel-mode)
 
-(provide 'nickel-mode)
-
 ;;; nickel-mode.el ends here
