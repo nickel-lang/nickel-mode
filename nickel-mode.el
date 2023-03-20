@@ -70,7 +70,7 @@
     (,nickel-mode-types . font-lock-type-face)
     (,nickel-mode-constants . font-lock-constant-face)
     (,nickel-mode-primops . font-lock-builtin-face)
-    (,nickel-mode-enum-tags . font-lock-constant-face)    
+    (,nickel-mode-enum-tags . font-lock-constant-face)
     (,nickel-mode-identifiers . (1 font-lock-variable-name-face))
     (,nickel-mode-operators . font-lock-builtin-face)
     (,nickel-mode-numbers . font-lock-constant-face)))
@@ -79,7 +79,7 @@
 (add-to-list 'auto-mode-alist '("\\.ncl\\'" . nickel-mode))
 
 (defvar nickel-mode-syntax-table
-  (let ((st (make-syntax-table)))    
+  (let ((st (make-syntax-table)))
     ;; Handle comments
     (modify-syntax-entry ?# "<" st)
     (modify-syntax-entry ?\n ">" st)
