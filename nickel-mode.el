@@ -76,6 +76,7 @@
     (,nickel-mode-numbers . font-lock-constant-face)))
 
 ;; Use Nickel mode for .ncl files
+;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.ncl\\'" . nickel-mode))
 
 (defvar nickel-mode-syntax-table
