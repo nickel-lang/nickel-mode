@@ -87,6 +87,7 @@
     st))
 
 
+;;;###autoload
 (define-derived-mode nickel-mode prog-mode
   "Nickel"
   "Major mode for editing Nickel source code."
