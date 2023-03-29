@@ -101,3 +101,7 @@
 (provide 'nickel-mode)
 
 ;;; nickel-mode.el ends here
+
+;; Local Variables:
+;; indent-tabs-mode: nil
+;; End:
