@@ -1,6 +1,6 @@
 ;;; nickel-mode.el --- A major mode for editing Nickel source code -*-lexical-binding: t-*-
 
-;; Copyright (c) Tweag Holding and its affiliates.
+;; Copyright (c) Tweag and its affiliates.
 
 ;; Version: 0.1
 ;; Author: The Nickel Team (nickel-lang@tweag.io)
