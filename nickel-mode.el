@@ -25,29 +25,29 @@
   :link '(url-link :tag "Site" "https://nickel-lang.org/")
   :link '(url-link :tag "Repository" "https://github.com/nickel-lang/nickel-mode"))
 
-(defvar nickel-mode-keywords
+(defconst nickel-mode-keywords
   (regexp-opt '("if" "then" "else" "forall" "in" "let"
                 "rec" "match" "fun" "import" "merge"
                 "default" "doc" "optional" "priority" "force" "not_exported")
-	      'word))
+              'symbols))
 
-(defvar nickel-mode-constants
+(defconst nickel-mode-constants
   (regexp-opt '("true" "false" "null")
-	     'word))
+              'symbols))
 
-(defvar nickel-mode-types
+(defconst nickel-mode-types
   (regexp-opt '("Dyn" "Num" "Str" "Array")
-	      'word))
+              'symbols))
 
-(defvar nickel-mode-primops
+(defconst nickel-mode-primops
   (regexp-opt '("%typeof%" "%assume%" "%array_lazy_assume%" "%dictionary_assume%"
-	        "%blame%" "%chng_pol%" "%polarity%" "%go_dom%" "%go_codom%" "%go_field%"
-	        "%go_array%" "%go_dict%" "%seal%" "%unseal%" "%embed%" "%record_map%"
-	        "%record_insert%" "%record_remove%" "%record_empty_with_tail%" "%record_seal_tail%"
-	        "%record_unseal_tail%" "%seq%" "%deep_seq%" "%force%" "%head%" "%tail%" "%length%"
-	        "%fields%" "%values%" "%pow%" "%trace%" "%has_field%" "%map%" "%elem_at%" "%generate%"
-	        "%rec_force%" "%rec_default%")
-	      'symbol))
+                "%blame%" "%chng_pol%" "%polarity%" "%go_dom%" "%go_codom%" "%go_field%"
+                "%go_array%" "%go_dict%" "%seal%" "%unseal%" "%embed%" "%record_map%"
+                "%record_insert%" "%record_remove%" "%record_empty_with_tail%" "%record_seal_tail%"
+                "%record_unseal_tail%" "%seq%" "%deep_seq%" "%force%" "%head%" "%tail%" "%length%"
+                "%fields%" "%values%" "%pow%" "%trace%" "%has_field%" "%map%" "%elem_at%" "%generate%"
+                "%rec_force%" "%rec_default%")
+              'symbols))
 
 
 (defconst nickel-mode-identifiers "\\_<?[a-zA-Z][_a-zA-Z0-9-']*\\_>")
