@@ -36,7 +36,7 @@
               'symbols))
 
 (defconst nickel-mode-types
-  (regexp-opt '("Dyn" "Num" "Str" "Array")
+  (regexp-opt '("Dyn" "Number" "String" "Array" "Bool")
               'symbols))
 
 (defconst nickel-mode-primops
@@ -46,14 +46,12 @@
                 "%record_insert%" "%record_remove%" "%record_empty_with_tail%" "%record_seal_tail%"
                 "%record_unseal_tail%" "%seq%" "%deep_seq%" "%force%" "%head%" "%tail%" "%length%"
                 "%fields%" "%values%" "%pow%" "%trace%" "%has_field%" "%map%" "%elem_at%" "%generate%"
-                "%rec_force%" "%rec_default%")
+                "%rec_force%" "%rec_default%" "%serialize%" "%deserialize%")
               'symbols))
 
 
-(defconst nickel-mode-identifiers "\\_<?[a-zA-Z][_a-zA-Z0-9-']*\\_>")
-;; Same as identifiers, but starting with a `
-;; TODO: Not sure if the ` will work yet...
-(defconst nickel-mode-enum-tags "\\_<`_?[a-zA-Z][_a-zA-Z0-9-']*\\_>")
+(defconst nickel-mode-identifiers "\\_<_?[[:alpha:]][[:alnum:]'_-]*\\_>")
+(defconst nickel-mode-enum-tags "`_?[[:alpha:]][[:alnum:]'_-]*")
 (defconst nickel-mode-numbers "\\_<[0-9]*\\.?[0-9]+\\_>")
 (defconst nickel-mode-operators
   (regexp-opt
@@ -61,16 +59,13 @@
       "!=" ")" "&&" "||" "{" "}" "(" "?" ";" "$" "&" "."
       "\"" "+" "-" "*" "/" "%" "@" "!" ".." "=>" "_" "<" ">"
       "<=" ">=" "[|" "|]")))
-;; TODO
-(defconst nickel-mode-strings "")
 
 (defconst nickel-mode-font-lock-keywords
-  `(
-    (,nickel-mode-keywords . font-lock-keyword-face)
-    (,nickel-mode-types . font-lock-type-face)
+  `((,nickel-mode-keywords . font-lock-keyword-face)
     (,nickel-mode-constants . font-lock-constant-face)
     (,nickel-mode-primops . font-lock-builtin-face)
     (,nickel-mode-enum-tags . font-lock-constant-face)
+    (,nickel-mode-types . font-lock-type-face)
     (,nickel-mode-identifiers . (1 font-lock-variable-name-face))
     (,nickel-mode-operators . font-lock-builtin-face)
     (,nickel-mode-numbers . font-lock-constant-face)))
@@ -93,9 +88,7 @@
   "Major mode for editing Nickel source code."
   
   (setq font-lock-defaults '((nickel-mode-font-lock-keywords)))
-
-  ;; (setq-local comment-start "# ")
-  ;; (setq-local comment-end "")
+  
   (set-syntax-table nickel-mode-syntax-table)
    
   :group 'nickel)
