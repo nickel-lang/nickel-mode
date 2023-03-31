@@ -50,9 +50,9 @@
               'symbols))
 
 
-(defconst nickel-mode-identifiers "\\_<_?[[:alpha:]][[:alnum:]'_-]*\\_>")
-(defconst nickel-mode-enum-tags "`_?[[:alpha:]][[:alnum:]'_-]*")
-(defconst nickel-mode-numbers "\\_<[0-9]*\\.?[0-9]+\\_>")
+(defconst nickel-mode-identifiers (rx symbol-start alpha (* (or alpha ?\_ ?\')) symbol-end))
+(defconst nickel-mode-enum-tags (rx symbol-start ?\` alpha (* (or alpha ?\_ ?\')) symbol-end))
+(defconst nickel-mode-numbers (rx symbol-start (optional ?\-) (+ digit) (optional ?\. (+ digit)) symbol-end))
 (defconst nickel-mode-operators
   (regexp-opt
    '("->" "\\[" "]" "," "|" ":" "=" "==" "|>"
@@ -66,9 +66,9 @@
     (,nickel-mode-primops . font-lock-builtin-face)
     (,nickel-mode-enum-tags . font-lock-constant-face)
     (,nickel-mode-types . font-lock-type-face)
-    (,nickel-mode-identifiers . (1 font-lock-variable-name-face))
-    (,nickel-mode-operators . font-lock-builtin-face)
-    (,nickel-mode-numbers . font-lock-constant-face)))
+    (,nickel-mode-identifiers . font-lock-variable-name-face)
+    (,nickel-mode-numbers . font-lock-constant-face)
+    (,nickel-mode-operators . font-lock-builtin-face)))
 
 (defun nickel-syntax-stringify ()
   "Having matched a multiline string, propertize the matched region."
