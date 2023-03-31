@@ -3,10 +3,10 @@
 [![MELPA](https://melpa.org/packages/nickel-mode-badge.svg)](https://melpa.org/#/nickel-mode)
 [![Build Status](https://github.com/nickel-lang/nickel-mode/actions/workflows/check.yaml/badge.svg)](https://github.com/nickel-lang/nickel-mode/actions/workflows/check.yaml/badge.svg)
 
-An emacs mode for the [Nickel](https://github.com/tweag/nickel) language.
+An emacs mode for the [Nickel](https://github.com/tweag/nickel) programming language.
 
 ## Installation
-* Install from [MELPA](https://melpa.org/#/nickel-mode)
+Install from [MELPA](https://melpa.org/#/nickel-mode)
 
 ## LSP Integration
 First, ensure you have the Nickel language server, [nls](https://github.com/tweag/nickel/tree/master/lsp) installed.
