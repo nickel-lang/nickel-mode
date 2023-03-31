@@ -8,7 +8,7 @@
 ;; Created: 7 March 2023
 ;; Keywords: languages configuration-language configuration nickel infrastructure
 ;; Homepage: https://nickel-lang.org/
-;; Package-Requires: ((emacs "24.1"))
+;; Package-Requires: ((emacs "24.3"))
 
 ;; This file is distributed under the terms of MIT license.
 
@@ -70,11 +70,33 @@
     (,nickel-mode-operators . font-lock-builtin-face)
     (,nickel-mode-numbers . font-lock-constant-face)))
 
+(defun nickel-syntax-stringify ()
+  "Having matched a multiline string, propertize the matched region."
+  (unless (or (nth 3 (syntax-ppss)) (nth 4 (syntax-ppss)))
+    (let ((start (match-beginning 0))
+          (end (match-end 0)))
+      (goto-char start)
+      (skip-chars-forward "m%")
+      (put-text-property (point) (1+ (point)) 'syntax-table (string-to-syntax "|"))
+      (forward-char 1)
+      (goto-char end)
+      (skip-chars-backward "m%")
+      (backward-char 1)
+      (put-text-property (point) (1+ (point)) 'syntax-table (string-to-syntax "|")))))
+
+(defconst nickel-syntax-propertize-function
+  (syntax-propertize-rules
+   ((rx "m" (group (+ "%")) ?\" (minimal-match (* (or nonl ?\n))) ?\" (backref 1))
+    (0 (ignore (nickel-syntax-stringify))))
+   ((rx ?\" (* not-newline) ?\")
+    (0 (ignore (nickel-syntax-stringify)))))
+  "A Nickel-specific `syntax-propertize-function'.")
+
 ;; Use Nickel mode for .ncl files
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.ncl\\'" . nickel-mode))
 
-(defvar nickel-mode-syntax-table
+(defconst nickel-mode-syntax-table
   (let ((st (make-syntax-table)))
     ;; Handle comments
     (modify-syntax-entry ?# "<" st)
@@ -88,7 +110,8 @@
   "Major mode for editing Nickel source code."
   :group 'nickel
   (setq font-lock-defaults '((nickel-mode-font-lock-keywords)))
-  (set-syntax-table nickel-mode-syntax-table))
+  (set-syntax-table nickel-mode-syntax-table)
+  (setq-local syntax-propertize-function nickel-syntax-propertize-function))
 
 
 (provide 'nickel-mode)
