@@ -86,12 +86,10 @@
 (define-derived-mode nickel-mode prog-mode
   "Nickel"
   "Major mode for editing Nickel source code."
-  
+  :group 'nickel
   (setq font-lock-defaults '((nickel-mode-font-lock-keywords)))
-  
-  (set-syntax-table nickel-mode-syntax-table)
-   
-  :group 'nickel)
+  (set-syntax-table nickel-mode-syntax-table))
+
 
 (provide 'nickel-mode)
 
