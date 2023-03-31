@@ -9,7 +9,7 @@ An emacs mode for the [Nickel](https://github.com/tweag/nickel) programming lang
 Install from [MELPA](https://melpa.org/#/nickel-mode)
 
 ## LSP Integration
-First, ensure you have the Nickel language server, [nls](https://github.com/tweag/nickel/tree/master/lsp) installed.
+First, ensure you have the Nickel language server, [nls](https://github.com/tweag/nickel/tree/master/lsp), installed.
 
 ### With [`lsp-mode`](https://github.com/emacs-lsp/lsp-mode)
 Add the following to your `init.el`:
