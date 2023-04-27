@@ -51,7 +51,7 @@
 
 
 (defconst nickel-mode-identifiers (rx symbol-start alpha (* (or alpha ?\_ ?\')) symbol-end))
-(defconst nickel-mode-enum-tags (rx symbol-start ?\` alpha (* (or alpha ?\_ ?\')) symbol-end))
+(defconst nickel-mode-enum-tags (rx symbol-start ?\' alpha (* (or alpha ?\_ ?\')) symbol-end))
 (defconst nickel-mode-numbers (rx symbol-start (optional ?\-) (+ digit) (optional ?\. (+ digit)) symbol-end))
 (defconst nickel-mode-operators
   (regexp-opt
