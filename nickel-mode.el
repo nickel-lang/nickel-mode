@@ -110,6 +110,8 @@
   "Major mode for editing Nickel source code."
   :group 'nickel
   (setq font-lock-defaults '((nickel-mode-font-lock-keywords)))
+  (setq comment-start "#")
+  (setq comment-end "")
   (set-syntax-table nickel-mode-syntax-table)
   (setq-local syntax-propertize-function nickel-syntax-propertize-function))
 
