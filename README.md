@@ -25,7 +25,8 @@ Add the following to your `init.el`:
                            :server-id 'nls
                            :major-modes '(nickel-mode)
                            :initialization-options (lambda ()
-						     (list :eval (make-hash-table)))))  ;; pass empty object to use default config
+						     ;; pass empty object to use default config
+						     (list :eval (make-hash-table)))))
 (add-hook 'nickel-mode-hook #'lsp-deferred)
 
 ```
