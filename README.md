@@ -21,8 +21,12 @@ Add the following to your `init.el`:
 (add-to-list 'lsp-language-id-configuration '(nickel-mode . "nickel"))
   (lsp-register-client (make-lsp-client
                            :new-connection (lsp-stdio-connection "nls")
-			   :activation-fn (lsp-activate-on "nickel")
+                           :activation-fn (lsp-activate-on "nickel")
                            :server-id 'nls
-                           :major-modes 'nickel-mode))
-(add-hook 'nickel-mode-hook 'lsp-deferred)
+                           :major-modes '(nickel-mode)
+                           :initialization-options (lambda ()
+						     ;; pass empty object to use default config
+						     (list :eval (make-hash-table)))))
+(add-hook 'nickel-mode-hook #'lsp-deferred)
+
 ```
