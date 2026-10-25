@@ -39,16 +39,7 @@
   (regexp-opt '("Dyn" "Number" "String" "Array" "Bool")
               'symbols))
 
-(defconst nickel-mode-primops
-  (regexp-opt '("%typeof%" "%assume%" "%array_lazy_assume%" "%dictionary_assume%"
-                "%blame%" "%chng_pol%" "%polarity%" "%go_dom%" "%go_codom%" "%go_field%"
-                "%go_array%" "%go_dict%" "%seal%" "%unseal%" "%embed%" "%record_map%"
-                "%record_insert%" "%record_remove%" "%record_empty_with_tail%" "%record_seal_tail%"
-                "%record_unseal_tail%" "%seq%" "%deep_seq%" "%force%" "%head%" "%tail%" "%length%"
-                "%fields%" "%values%" "%pow%" "%trace%" "%has_field%" "%map%" "%elem_at%" "%generate%"
-                "%rec_force%" "%rec_default%" "%serialize%" "%deserialize%")
-              'symbols))
-
+(defconst nickel-mode-primops (rx ?% (+ (or alnum ?\_ ?\/)) ?%))
 
 (defconst nickel-mode-identifiers (rx symbol-start alpha (* (or alpha ?\_ ?\')) symbol-end))
 (defconst nickel-mode-enum-tags (rx symbol-start ?\' alpha (* (or alpha ?\_ ?\')) symbol-end))
