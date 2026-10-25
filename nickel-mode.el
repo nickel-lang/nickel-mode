@@ -72,9 +72,10 @@
 
 (defun nickel-syntax-stringify ()
   "Having matched a multiline string, propertize the matched region."
-  (unless (or (nth 3 (syntax-ppss)) (nth 4 (syntax-ppss)))
-    (let ((start (match-beginning 0))
-          (end (match-end 0)))
+  (let* ((start (match-beginning 0))
+         (end (match-end 0))
+         (ppss (save-excursion (syntax-ppss start))))
+    (unless (or (nth 3 ppss) (nth 4 ppss))
       (goto-char start)
       (skip-chars-forward "m%")
       (put-text-property (point) (1+ (point)) 'syntax-table (string-to-syntax "|"))
@@ -87,8 +88,6 @@
 (defconst nickel-syntax-propertize-function
   (syntax-propertize-rules
    ((rx "m" (group (+ "%")) ?\" (minimal-match (* (or nonl ?\n))) ?\" (backref 1))
-    (0 (ignore (nickel-syntax-stringify))))
-   ((rx ?\" (* not-newline) ?\")
     (0 (ignore (nickel-syntax-stringify)))))
   "A Nickel-specific `syntax-propertize-function'.")
 
