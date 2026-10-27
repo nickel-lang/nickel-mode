@@ -41,8 +41,8 @@
 
 (defconst nickel-mode-primops (rx ?% (+ (or alnum ?\_ ?\/)) ?%))
 
-(defconst nickel-mode-identifiers (rx symbol-start alpha (* (or alpha ?\_ ?\')) symbol-end))
-(defconst nickel-mode-enum-tags (rx symbol-start ?\' alpha (* (or alpha ?\_ ?\')) symbol-end))
+(defconst nickel-mode-identifiers (rx symbol-start (* ?_) alpha (* (or alnum ?\_ ?\- ?\')) symbol-end))
+(defconst nickel-mode-enum-tags (rx symbol-start ?' (* ?_) alpha (* (or alnum ?\_ ?\- ?\')) symbol-end))
 (defconst nickel-mode-numbers (rx symbol-start (optional ?\-) (+ digit) (optional ?\. (+ digit)) symbol-end))
 (defconst nickel-mode-operators
   (regexp-opt
@@ -91,6 +91,8 @@
     ;; Handle comments
     (modify-syntax-entry ?# "<" st)
     (modify-syntax-entry ?\n ">" st)
+    ;; Identifiers may contain primes, as in x'
+    (modify-syntax-entry ?' "_" st)
     st))
 
 
